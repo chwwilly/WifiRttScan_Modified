@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 package com.example.android.wifirttscan;
+//import com.example.android.wifirttscan.MailService;
+
 
 import android.Manifest;
 import android.Manifest.permission;
@@ -42,8 +44,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -58,6 +62,7 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
 
     private static final int SAMPLE_SIZE_DEFAULT = 10000;
     private static final int MILLISECONDS_DELAY_BEFORE_NEW_RANGING_REQUEST_DEFAULT = 1000;
+    private static final int WINDOW_SIZE = 100;
 
     // UI Elements.
     private TextView mSsidTextView;
@@ -71,6 +76,8 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
     private TextView mSuccessesInBurstTextView;
     private TextView mSuccessRatioTextView;
     private TextView mNumberOfRequestsTextView;
+    private TextView mChannelTextView;
+    private TextView mBandwidthTextView;
 
     private EditText mSampleSizeEditText;
     private EditText mMillisecondsDelayBeforeNewRangingRequestEditText;
@@ -81,6 +88,9 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
 
     private int mNumberOfRangeRequests;
     private int mNumberOfSuccessfulRangeRequests;
+
+    private Date mStartTime;
+    private Date mEndTime;
 
     private int mMillisecondsDelayBeforeNewRangingRequest;
 
@@ -113,6 +123,10 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
     // Triggers additional RangingRequests with delay (mMillisecondsDelayBeforeNewRangingRequest).
     final Handler mRangeRequestDelayHandler = new Handler();
 
+    private FileOutputStream mfos = null;
+    private String mFilename;
+    private File mfile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -131,6 +145,9 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
         mSuccessesInBurstTextView = findViewById(R.id.successes_in_burst_value);
         mSuccessRatioTextView = findViewById(R.id.success_ratio_value);
         mNumberOfRequestsTextView = findViewById(R.id.number_of_requests_value);
+
+        mChannelTextView = findViewById(R.id.channel);
+        mBandwidthTextView = findViewById(R.id.bandwidth);
 
         mSampleSizeEditText = findViewById(R.id.stats_window_size_edit_value);
         mSampleSizeEditText.setText(SAMPLE_SIZE_DEFAULT + "");
@@ -153,6 +170,22 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
         mSsidTextView.setText(mScanResult.SSID);
         mBssidTextView.setText(mScanResult.BSSID);
 
+        mChannelTextView.setText(Integer.toString(mScanResult.frequency));
+
+        int wifiwidth = mScanResult.channelWidth;
+        if (wifiwidth == 0) {
+            mBandwidthTextView.setText("20 MHz");
+        } else if (wifiwidth == 1) {
+            mBandwidthTextView.setText("40 MHz");
+        } else if (wifiwidth == 2) {
+            mBandwidthTextView.setText("80 MHz");
+        } else if (wifiwidth == 3) {
+            mBandwidthTextView.setText("160 MHz");
+        } else {
+            mBandwidthTextView.setText("80 + 80 MHz");
+        }
+
+
         mWifiRttManager = (WifiRttManager) getSystemService(Context.WIFI_RTT_RANGING_SERVICE);
         mRttRangingResultCallback = new RttRangingResultCallback();
 
@@ -164,8 +197,17 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
         mNumSuccessfulMeasurementsHistory = new ArrayList<>();
 
         resetData();
+        openFile();
 
         startRangingRequest();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        saveData();
+        mfile.delete();
+        finish();
     }
 
     public void onRequestPermissionsResult (int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -217,7 +259,14 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
         mWifiRttManager.startRanging(
                 rangingRequest, getApplication().getMainExecutor(), mRttRangingResultCallback);
 
-        if (mNumberOfRangeRequests == mSampleSize) saveData();
+        if (mNumberOfRangeRequests == mSampleSize + 1) {
+            saveData();
+            Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
+            writeDescribeFile();
+            resetData();
+            //sendEmail();
+            openFile();
+        }
     }
 
     // Calculates average distance based on stored history.
@@ -235,9 +284,10 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
     // oldest distance record in the list.
     private void addDistanceToHistory(int distance) {
 
-        if (mStatisticRangeHistory.size() >= mSampleSize) {
+        if (mStatisticRangeHistory.size() >= WINDOW_SIZE) {
 
-            if (mStatisticRangeHistoryEndIndex >= mSampleSize) {
+
+            if (mStatisticRangeHistoryEndIndex >= WINDOW_SIZE) {
                 mStatisticRangeHistoryEndIndex = 0;
             }
 
@@ -264,9 +314,9 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
     // value, loops back over and replaces the oldest distance record in the list.
     private void addStandardDeviationOfDistanceToHistory(int distanceSd) {
 
-        if (mStatisticRangeSDHistory.size() >= mSampleSize) {
+        if (mStatisticRangeSDHistory.size() >= WINDOW_SIZE) {
 
-            if (mStatisticRangeSDHistoryEndIndex >= mSampleSize) {
+            if (mStatisticRangeSDHistoryEndIndex >= WINDOW_SIZE) {
                 mStatisticRangeSDHistoryEndIndex = 0;
             }
 
@@ -279,9 +329,9 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
     }
 
     private void addRssiToHistory(int Rssi) {
-        if (mRssiHistory.size() >= mSampleSize) {
+        if (mRssiHistory.size() >= WINDOW_SIZE) {
 
-            if (mRssiHistoryEndIndex >= mSampleSize) {
+            if (mRssiHistoryEndIndex >= WINDOW_SIZE) {
                 mRssiHistoryEndIndex = 0;
             }
 
@@ -294,9 +344,9 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
     }
 
     private void addNumSuccessfulMeasurementsToHistory(int NumSuccessfulMeasurements) {
-        if (mNumSuccessfulMeasurementsHistory.size() >= mSampleSize) {
+        if (mNumSuccessfulMeasurementsHistory.size() >= WINDOW_SIZE) {
 
-            if (mNumSuccessfulMeasurementsHistoryEndIndex >= mSampleSize) {
+            if (mNumSuccessfulMeasurementsHistoryEndIndex >= WINDOW_SIZE) {
                 mNumSuccessfulMeasurementsHistoryEndIndex = 0;
             }
 
@@ -309,41 +359,105 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
     }
 
     public void onResetButtonClick(View view) {
+        saveData();
+        mfile.delete();
         resetData();
+        openFile();
     }
 
     private void saveData() {
-        if (ActivityCompat.checkSelfPermission(this, permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{permission.WRITE_EXTERNAL_STORAGE}, 1000);
-        }
-
-        String fileName = Calendar.getInstance().getTime().toString() + ".txt";
-
-        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), fileName);
-        FileOutputStream fos = null;
         try {
-            fos = new FileOutputStream(file);
-            String header = String.format("%8s %8s %8s %8s %8s\n", "Num", "Range", "RangeSD", "Rssi", "NumFTM");
-            fos.write(header.getBytes());
-            for (int i = 0; i < mSampleSize; i++) {
-                String content = String.format("% 8d % 8d % 8d % 8d % 8d \n", i, mStatisticRangeHistory.get(i),
-                        mStatisticRangeSDHistory.get(i), mRssiHistory.get(i), mNumSuccessfulMeasurementsHistory.get(i));
-                fos.write(content.getBytes());
-            }
-            fos.close();
-            Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
+            mfos.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void wrtieData(int i, int distance, int distanceSd, int Rssi, int NumSuccessfulMeasurements) {
+        String content = String.format("% 8d % 8d % 8d % 8d % 8d \n", i, distance, distanceSd, Rssi, NumSuccessfulMeasurements);
+        try {
+            mfos.write(content.getBytes());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             Toast.makeText(this, "File not found", Toast.LENGTH_SHORT).show();
-        } catch ( IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
             Toast.makeText(this, "Error saving", Toast.LENGTH_SHORT).show();
         }
     }
 
+    private void openFile() {
+        if (ActivityCompat.checkSelfPermission(this, permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{permission.WRITE_EXTERNAL_STORAGE}, 1000);
+        }
+
+        mStartTime = Calendar.getInstance().getTime();
+        mFilename =  mStartTime.toString() + ".txt";
+
+        mfile = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), mFilename);
+        try {
+            mfos = new FileOutputStream(mfile);
+            String header = String.format("%8s %8s %8s %8s %8s\n", "Num", "Range", "RangeSD", "Rssi", "NumFTM");
+            mfos.write(header.getBytes());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "File not found", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "Error saving", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void writeDescribeFile() {
+        try {
+            mEndTime = Calendar.getInstance().getTime();
+            long elapsed = (mEndTime.getTime() -mStartTime.getTime()) / 1000;
+
+            File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), "RTT.txt");
+
+            if(file.exists()) {
+                FileOutputStream fos = new FileOutputStream(file, true);
+                String content = String.format("%8s %20s %20s %10s %10s %10s %10s %10s\n",
+                        1, mScanResult.SSID, mMAC, mScanResult.frequency, mScanResult.channelWidth, mSampleSize, mMillisecondsDelayBeforeNewRangingRequest, elapsed);
+                fos.write(content.getBytes());
+                fos.close();
+            } else {
+                FileOutputStream fos = new FileOutputStream(file);
+                String header = String.format("%8s %20s %20s %10s %10s %10s %10s %10s\n", "Num", "SSID", "BSSID", "Channel", "Bandwidth","Requests", "Period", "Elapsed");
+                String content = String.format("%8s %20s %20s %10s %10s %10s %10s %10s\n",
+                        1, mScanResult.SSID, mMAC, mScanResult.frequency, mScanResult.channelWidth, mSampleSize, mMillisecondsDelayBeforeNewRangingRequest, elapsed);
+                fos.write(header.getBytes());
+                fos.write(content.getBytes());
+                fos.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    protected void sendEmail() {
+        MailService mailer = new MailService("jhw1994@gmail.com","r05942023@g.ntu.edu.tw","Subject","TextBody", "<b>HtmlBody</b>");
+        try {
+            mailer.sendAuthenticated();
+        } catch (Exception e) {
+            Log.e(TAG, "Failed sending email.", e);
+        }
+
+        /*MailService mailer = new MailService("from@mydomain.com","to@domain.com","Subject","TextBody", "<b>HtmlBody</b>", (Attachment) null);
+        try {
+            mailer.sendAuthenticated();
+        } catch (Exception e) {
+            Log.e(AskTingTing.APP, "Failed sending email.", e);
+        }*/
+    }
+
     public void onSaveButtonClick(View view) {
         saveData();
+        Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
         resetData();
+        openFile();
     }
 
     // Class that handles callbacks for all RangingRequests and issues new RangingRequests.
@@ -411,6 +525,9 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
 
                         mNumberOfRequestsTextView.setText(mNumberOfRangeRequests + "");
 
+
+                        wrtieData(mNumberOfRangeRequests, rangingResult.getDistanceMm(), rangingResult.getDistanceStdDevMm(),
+                                rangingResult.getRssi(), rangingResult.getNumSuccessfulMeasurements());
                     } else if (rangingResult.getStatus()
                             == RangingResult.STATUS_RESPONDER_DOES_NOT_SUPPORT_IEEE80211MC) {
                         Log.d(TAG, "RangingResult failed (AP doesn't support IEEE80211 MC.");

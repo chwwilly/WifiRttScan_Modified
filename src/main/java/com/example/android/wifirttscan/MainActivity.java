@@ -27,6 +27,7 @@ import android.content.pm.PackageManager;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.net.wifi.rtt.RangingRequest;
+import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -146,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements ScanResultClickLi
 
             for (ScanResult scanResult : originalList) {
 
-                newList.add(scanResult);
+                //newList.add(scanResult);
                 if (scanResult.is80211mcResponder()) {
                     newList.add(scanResult);
                 }
@@ -185,3 +186,4 @@ public class MainActivity extends AppCompatActivity implements ScanResultClickLi
         }
     }
 }
+

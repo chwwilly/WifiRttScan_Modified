@@ -1150,6 +1150,7 @@ id arc
 id asConfigured
 id async
 id auto
+id bandwidth
 id barrier
 id beginning
 id blocking
@@ -1162,6 +1163,7 @@ id center
 id center_horizontal
 id center_vertical
 id chains
+id channel
 id checkbox
 id chronometer
 id clip_horizontal
@@ -1502,7 +1504,9 @@ string action_settings
 string activity_access_point_ranging_results_requesting_default
 string app_name
 string appbar_scrolling_view_behavior
+string bandwidth_label_activity_access_point_ranging_results
 string bottom_sheet_behavior
+string channel_label_activity_access_point_ranging_results
 string character_counter_content_description
 string character_counter_pattern
 string continue_activity_location_permission_request

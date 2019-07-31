@@ -36,6 +36,8 @@
     <string name="rssi_label_activity_access_point_ranging_results">RSSI (dBm):</string>
     <string name="successes_in_burst_label_activity_access_point_ranging_results">Successes in burst:</string>
     <string name="success_ratio_label_activity_access_point_ranging_results">Success Ratio:</string>
+    <string name="channel_label_activity_access_point_ranging_results">Channel:</string>
+    <string name="bandwidth_label_activity_access_point_ranging_results">Bandwidth:</string>
 
     <string name="stats_window_size_label_activity_access_point_ranging_results">Stats window size:</string>
     <string name="ranging_period_label_activity_access_point_ranging_results">Ranging period (ms):</string>

@@ -45,6 +45,32 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="BSSID" />
 
+    <TextView
+        android:id="@+id/channel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_access_point_ranging_request_margin_start"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:textAlignment="center"
+        android:textSize="@dimen/activity_access_point_ranging_request_header_text_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ssid"
+        tools:text="Channel" />
+
+    <TextView
+        android:id="@+id/bandwidth"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/activity_access_point_ranging_request_margin_end"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:textAlignment="center"
+        android:textSize="@dimen/activity_access_point_ranging_request_header_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bssid"
+        tools:text="Bandwidth" />
+
     <View
         android:id="@+id/divider1"
         android:layout_width="0dp"
@@ -56,7 +82,7 @@
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bssid" />
+        app:layout_constraintTop_toBottomOf="@+id/channel" />
 
 
     <ScrollView
