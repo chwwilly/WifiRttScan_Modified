@@ -16,12 +16,12 @@
         "source": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\src\\main\\res\\drawable\\ic_round_network_wifi_24px.xml"
     },
     {
-        "merged": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
-    },
-    {
         "merged": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
         "source": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
         "merged": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
@@ -36,10 +36,6 @@
         "source": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\src\\main\\res\\layout\\recycler_row_item.xml"
     },
     {
-        "merged": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_wifi.png.flat",
-        "source": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\src\\main\\res\\drawable-hdpi\\ic_wifi.png"
-    },
-    {
         "merged": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
         "source": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     },
@@ -52,10 +48,6 @@
         "source": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\src\\main\\res\\layout\\recycler_row_header.xml"
     },
     {
-        "merged": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_tile.9.png.flat",
-        "source": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\src\\main\\res\\drawable-hdpi\\tile.9.png"
-    },
-    {
         "merged": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\build\\intermediates\\res\\merged\\debug\\layout_activity_access_point_ranging_results.xml.flat",
         "source": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\src\\main\\res\\layout\\activity_access_point_ranging_results.xml"
     },
@@ -66,10 +58,6 @@
     {
         "merged": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
         "source": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
-    },
-    {
-        "merged": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_wifi.png.flat",
-        "source": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\src\\main\\res\\drawable-xxhdpi\\ic_wifi.png"
     },
     {
         "merged": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
@@ -94,13 +82,5 @@
     {
         "merged": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\build\\intermediates\\res\\merged\\debug\\layout_activity_location_permission_request.xml.flat",
         "source": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\src\\main\\res\\layout\\activity_location_permission_request.xml"
-    },
-    {
-        "merged": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_wifi.png.flat",
-        "source": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\src\\main\\res\\drawable-xhdpi\\ic_wifi.png"
-    },
-    {
-        "merged": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_wifi.png.flat",
-        "source": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\src\\main\\res\\drawable-mdpi\\ic_wifi.png"
     }
 ]

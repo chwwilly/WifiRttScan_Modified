@@ -381,10 +381,8 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
             mfos.write(content.getBytes());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            Toast.makeText(this, "File not found", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
             e.printStackTrace();
-            Toast.makeText(this, "Error saving", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -403,10 +401,8 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
             mfos.write(header.getBytes());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            Toast.makeText(this, "File not found", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
             e.printStackTrace();
-            Toast.makeText(this, "Error saving", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -419,14 +415,14 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
 
             if(file.exists()) {
                 FileOutputStream fos = new FileOutputStream(file, true);
-                String content = String.format("%8s %20s %20s %10s %10s %10s %10s %10s\n",
+                String content = String.format("%8s %20s %20s %20s %10s %10s %10s %10s %10s\n",
                         1, mScanResult.SSID, mMAC, mScanResult.frequency, mScanResult.channelWidth, mSampleSize, mMillisecondsDelayBeforeNewRangingRequest, elapsed);
                 fos.write(content.getBytes());
                 fos.close();
             } else {
                 FileOutputStream fos = new FileOutputStream(file);
-                String header = String.format("%8s %20s %20s %10s %10s %10s %10s %10s\n", "Num", "SSID", "BSSID", "Channel", "Bandwidth","Requests", "Period", "Elapsed");
-                String content = String.format("%8s %20s %20s %10s %10s %10s %10s %10s\n",
+                String header = String.format("%8s %20s %20s %20s %10s %10s %10s %10s %10s\n", "Num", "SSID", "BSSID", "Channel", "Bandwidth","Requests", "Period", "Elapsed");
+                String content = String.format("%8s %20s %20s %20s %10s %10s %10s %10s %10s\n",
                         1, mScanResult.SSID, mMAC, mScanResult.frequency, mScanResult.channelWidth, mSampleSize, mMillisecondsDelayBeforeNewRangingRequest, elapsed);
                 fos.write(header.getBytes());
                 fos.write(content.getBytes());
@@ -438,6 +434,7 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
     }
 
     protected void sendEmail() {
+        // TODO (chanwilly): Send email notification when measurement is done.
         MailService mailer = new MailService("jhw1994@gmail.com","r05942023@g.ntu.edu.tw","Subject","TextBody", "<b>HtmlBody</b>");
         try {
             mailer.sendAuthenticated();

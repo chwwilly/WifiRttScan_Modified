@@ -179,7 +179,6 @@ public class MainActivity extends AppCompatActivity implements ScanResultClickLi
                                     + " RTT capable.");
 
                 } else {
-                    // TODO (jewalker): Add Snackbar regarding permissions
                     Log.d(TAG, "Permissions not allowed.");
                 }
             }
