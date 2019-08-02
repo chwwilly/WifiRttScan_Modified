@@ -43,8 +43,9 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -170,7 +171,7 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
         mSsidTextView.setText(mScanResult.SSID);
         mBssidTextView.setText(mScanResult.BSSID);
 
-        mChannelTextView.setText(Integer.toString(mScanResult.frequency));
+        mChannelTextView.setText(Integer.toString(mScanResult.frequency) + " MHz");
 
         int wifiwidth = mScanResult.channelWidth;
         if (wifiwidth == 0) {
@@ -220,6 +221,20 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
                     finish();
                 }
         }
+    }
+
+    public void onResetButtonClick(View view) {
+        saveData();
+        mfile.delete();
+        resetData();
+        openFile();
+    }
+
+    public void onSaveButtonClick(View view) {
+        saveData();
+        Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
+        resetData();
+        openFile();
     }
 
     private void resetData() {
@@ -358,13 +373,6 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
         }
     }
 
-    public void onResetButtonClick(View view) {
-        saveData();
-        mfile.delete();
-        resetData();
-        openFile();
-    }
-
     private void saveData() {
         try {
             mfos.close();
@@ -381,10 +389,10 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
             mfos.write(content.getBytes());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            Toast.makeText(this, "File not found", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "File not found", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
             e.printStackTrace();
-            Toast.makeText(this, "Error saving", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Error saving", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -403,10 +411,10 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
             mfos.write(header.getBytes());
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            Toast.makeText(this, "File not found", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "File not found", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
             e.printStackTrace();
-            Toast.makeText(this, "Error saving", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Error saving", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -415,12 +423,24 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
             mEndTime = Calendar.getInstance().getTime();
             long elapsed = (mEndTime.getTime() -mStartTime.getTime()) / 1000;
 
-            File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), "RTT.txt");
+            String filepath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/RTT.txt";
+            File file = new File(filepath);
+            BufferedReader bufferedReader = null;
 
             if(file.exists()) {
+                String inputLine = "1", inputLine_tmp;
+                bufferedReader = new BufferedReader(new FileReader(filepath));
+                while ((inputLine_tmp = bufferedReader.readLine()) != null) {
+                    inputLine = inputLine_tmp;
+                }
+
+                String[] splited = inputLine.split("\\s+");
+                Toast.makeText(this, splited[1], Toast.LENGTH_SHORT).show();
+                int num = Integer.parseInt(splited[1]);
+
                 FileOutputStream fos = new FileOutputStream(file, true);
                 String content = String.format("%8s %20s %20s %10s %10s %10s %10s %10s\n",
-                        1, mScanResult.SSID, mMAC, mScanResult.frequency, mScanResult.channelWidth, mSampleSize, mMillisecondsDelayBeforeNewRangingRequest, elapsed);
+                        num+1, mScanResult.SSID, mMAC, mScanResult.frequency, mScanResult.channelWidth, mSampleSize, mMillisecondsDelayBeforeNewRangingRequest, elapsed);
                 fos.write(content.getBytes());
                 fos.close();
             } else {
@@ -438,6 +458,7 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
     }
 
     protected void sendEmail() {
+        // TODO (chanwilly): Send email notification when measurement done
         MailService mailer = new MailService("jhw1994@gmail.com","r05942023@g.ntu.edu.tw","Subject","TextBody", "<b>HtmlBody</b>");
         try {
             mailer.sendAuthenticated();
@@ -453,12 +474,7 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
         }*/
     }
 
-    public void onSaveButtonClick(View view) {
-        saveData();
-        Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
-        resetData();
-        openFile();
-    }
+
 
     // Class that handles callbacks for all RangingRequests and issues new RangingRequests.
     private class RttRangingResultCallback extends RangingResultCallback {

@@ -1,4 +1,4 @@
-#Wed Jul 31 16:21:50 CST 2019
+#Fri Aug 02 17:28:47 CST 2019
 base.0=D\:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes.dex
 path.1=classes.dex
 renamed.1=classes2.dex
