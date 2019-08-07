@@ -1,8 +1,8 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:17:1-63:12
-INJECTED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:17:1-63:12
-INJECTED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:17:1-63:12
+ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:17:1-64:12
+INJECTED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:17:1-64:12
+INJECTED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:17:1-64:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-alpha1] C:\Users\User\.gradle\caches\transforms-2\files-2.1\1bd4f41b8ef34afeafc68e0d921ec6d5\constraintlayout-2.0.0-alpha1\AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.android.material:material:1.0.0-beta01] C:\Users\User\.gradle\caches\transforms-2\files-2.1\b8c66b640030e2430cebaff7920793dc\material-1.0.0-beta01\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat:1.0.0-beta01] C:\Users\User\.gradle\caches\transforms-2\files-2.1\040a6f074f1c65b62d8f123c18354f26\appcompat-1.0.0-beta01\AndroidManifest.xml:17:1-22:12
@@ -33,8 +33,8 @@ MERGED from [androidx.lifecycle:lifecycle-runtime:2.0.0-beta01] C:\Users\User\.g
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.0.0-beta01] C:\Users\User\.gradle\caches\transforms-2\files-2.1\594577f1e47e590b444872b807b0ab2d\lifecycle-viewmodel-2.0.0-beta01\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0-beta01] C:\Users\User\.gradle\caches\transforms-2\files-2.1\19275a886fac427024a8ab2b512f61a8\lifecycle-livedata-core-2.0.0-beta01\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0-beta01] C:\Users\User\.gradle\caches\transforms-2\files-2.1\3cbf2530d022c80856efd6a30dcd8ef7\core-runtime-2.0.0-beta01\AndroidManifest.xml:17:1-22:12
-INJECTED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:17:1-63:12
-INJECTED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:17:1-63:12
+INJECTED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:17:1-64:12
+INJECTED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:17:1-64:12
 	package
 		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:18:5-46
 	android:versionName
@@ -71,8 +71,12 @@ uses-permission#android.permission.INTERNET
 ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:29:5-67
 	android:name
 		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:29:22-64
+uses-permission#android.permission.KILL_BACKGROUND_PROCESSES
+ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:30:5-83
+	android:name
+		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:30:22-81
 application
-ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:31:5-62:19
+ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:32:5-63:19
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-alpha1] C:\Users\User\.gradle\caches\transforms-2\files-2.1\1bd4f41b8ef34afeafc68e0d921ec6d5\constraintlayout-2.0.0-alpha1\AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-alpha1] C:\Users\User\.gradle\caches\transforms-2\files-2.1\1bd4f41b8ef34afeafc68e0d921ec6d5\constraintlayout-2.0.0-alpha1\AndroidManifest.xml:9:5-20
 MERGED from [com.google.android.material:material:1.0.0-beta01] C:\Users\User\.gradle\caches\transforms-2\files-2.1\b8c66b640030e2430cebaff7920793dc\material-1.0.0-beta01\AndroidManifest.xml:22:5-20
@@ -84,55 +88,55 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.0.0-beta01] C:\U
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.0.0-beta01] C:\Users\User\.gradle\caches\transforms-2\files-2.1\99af77807b792c490d234813834f6fae\core-1.0.0-beta01\AndroidManifest.xml:22:18-86
 	android:supportsRtl
-		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:36:9-35
+		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:37:9-35
 	android:label
-		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:34:9-41
+		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:35:9-41
 	android:roundIcon
-		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:35:9-54
+		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:36:9-54
 	android:icon
-		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:33:9-43
+		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:34:9-43
 	android:allowBackup
-		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:32:9-35
+		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:33:9-35
 	android:theme
-		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:37:9-46
+		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:38:9-46
 activity#com.example.android.wifirttscan.MainActivity
-ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:39:9-48:20
+ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:40:9-49:20
 	android:label
-		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:41:13-45
+		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:42:13-45
 	android:theme
-		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:42:13-50
+		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:43:13-50
 	android:name
-		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:40:13-41
+		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:41:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:43:13-47:29
+ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:44:13-48:29
 action#android.intent.action.MAIN
-ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:44:17-69
+ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:45:17-69
 	android:name
-		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:44:25-66
+		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:45:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:46:17-77
+ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:47:17-77
 	android:name
-		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:46:27-74
+		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:47:27-74
 activity#com.example.android.wifirttscan.LocationPermissionRequestActivity
-ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:50:9-55:20
+ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:51:9-56:20
 	android:parentActivityName
-		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:53:13-55
+		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:54:13-55
 	android:label
-		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:52:13-79
+		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:53:13-79
 	android:theme
-		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:54:13-50
+		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:55:13-50
 	android:name
-		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:51:13-62
+		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:52:13-62
 activity#com.example.android.wifirttscan.AccessPointRangingResultsActivity
-ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:57:9-61:20
+ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:58:9-62:20
 	android:parentActivityName
-		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:59:13-55
+		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:60:13-55
 	android:label
-		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:58:13-80
+		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:59:13-80
 	android:theme
-		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:60:13-50
+		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:61:13-50
 	android:name
-		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:57:19-68
+		ADDED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:58:19-68
 uses-sdk
 INJECTED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml

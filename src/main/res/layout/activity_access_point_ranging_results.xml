@@ -320,32 +320,60 @@
                 app:layout_constraintTop_toBottomOf="@+id/number_of_requests_value" />
 
             <TextView
+                android:id="@+id/location_label"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/activity_access_point_ranging_request_edit_view_height"
+                android:layout_marginStart="@dimen/activity_access_point_ranging_request_margin_start"
+                android:layout_marginTop="@dimen/activity_access_point_ranging_request_margin_top"
+                android:gravity="start"
+                android:text="@string/ranging_period_label_location"
+                android:textAlignment="textStart"
+                android:textSize="@dimen/activity_access_point_ranging_request_item_text_size"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/divider2"
+                tools:ignore="HardcodedText" />
+
+            <EditText
+                android:id="@+id/location_value"
+                android:layout_width="@dimen/activity_access_point_ranging_request_edit_view_width"
+                android:layout_height="@dimen/activity_access_point_ranging_request_edit_view_height"
+                android:layout_marginTop="@dimen/activity_access_point_ranging_request_margin_top"
+                android:layout_marginEnd="@dimen/activity_access_point_ranging_request_margin_end"
+                android:ems="10"
+                android:singleLine="true"
+                android:textAlignment="textEnd"
+                android:textSize="@dimen/activity_access_point_ranging_request_item_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/divider2"
+                android:autofillHints="" />
+
+            <TextView
                 android:id="@+id/stats_window_size_label"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/activity_access_point_ranging_request_edit_view_height"
                 android:layout_marginStart="@dimen/activity_access_point_ranging_request_margin_start"
-                android:layout_marginTop="@dimen/activity_access_point_ranging_request_margin_top_divider"
+                android:layout_marginTop="8dp"
                 android:gravity="start"
                 android:text="@string/stats_window_size_label_activity_access_point_ranging_results"
                 android:textAlignment="textStart"
                 android:textSize="@dimen/activity_access_point_ranging_request_item_text_size"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/divider2" />
+                app:layout_constraintTop_toBottomOf="@+id/location_label" />
 
             <EditText
                 android:id="@+id/stats_window_size_edit_value"
                 android:layout_width="@dimen/activity_access_point_ranging_request_edit_view_width"
                 android:layout_height="@dimen/activity_access_point_ranging_request_edit_view_height"
-                android:layout_marginTop="@dimen/activity_access_point_ranging_request_margin_top_divider"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="@dimen/activity_access_point_ranging_request_margin_end"
+                android:autofillHints=""
                 android:ems="10"
                 android:inputType="number"
                 android:singleLine="true"
                 android:textAlignment="textEnd"
                 android:textSize="@dimen/activity_access_point_ranging_request_item_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/divider2"
-                tools:text="50" />
+                app:layout_constraintTop_toBottomOf="@+id/location_value" />
 
             <TextView
                 android:id="@+id/ranging_period_label"
@@ -361,19 +389,20 @@
                 app:layout_constraintTop_toBottomOf="@+id/stats_window_size_label" />
 
             <EditText
-                android:id="@+id/ranging_period_edit_value"
+                android:id="@+id/ranging_period_edit_value2"
+                style="@style/Widget.AppCompat.EditText"
                 android:layout_width="@dimen/activity_access_point_ranging_request_edit_view_width"
-                android:layout_height="@dimen/activity_access_point_ranging_request_edit_view_height"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_access_point_ranging_request_margin_top"
                 android:layout_marginEnd="@dimen/activity_access_point_ranging_request_margin_end"
                 android:ems="10"
-                android:inputType="number"
-                android:singleLine="true"
+                android:inputType="textMultiLine|number"
+                android:digits="0123456789\n"
+                android:singleLine="false"
                 android:textAlignment="textEnd"
                 android:textSize="@dimen/activity_access_point_ranging_request_item_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/stats_window_size_edit_value"
-                tools:text="1000" />
+                app:layout_constraintTop_toBottomOf="@+id/stats_window_size_edit_value" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
@@ -397,7 +426,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:onClick="onSaveButtonClick"
-        android:text="Save"
+        android:text="@string/save"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

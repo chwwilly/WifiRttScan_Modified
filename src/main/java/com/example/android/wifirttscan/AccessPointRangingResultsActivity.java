@@ -61,7 +61,7 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
     public static final String SCAN_RESULT_EXTRA =
             "com.example.android.wifirttscan.extra.SCAN_RESULT";
 
-    private static final int SAMPLE_SIZE_DEFAULT = 10000;
+    private static final int SAMPLE_SIZE_DEFAULT = 1000;
     private static final int MILLISECONDS_DELAY_BEFORE_NEW_RANGING_REQUEST_DEFAULT = 1000;
     private static final int WINDOW_SIZE = 100;
 
@@ -81,7 +81,6 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
     private TextView mBandwidthTextView;
 
     private EditText mSampleSizeEditText;
-    private EditText mMillisecondsDelayBeforeNewRangingRequestEditText;
 
     // Non UI variables.
     private ScanResult mScanResult;
@@ -92,6 +91,14 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
 
     private Date mStartTime;
     private Date mEndTime;
+
+    private EditText mLocationEditText;
+    private String mLocation;
+
+    private EditText mPeriodEditText;
+    private int[] mPeriod;
+    private int mPeriodRequest;
+    private int mPeriodFlag;
 
     private int mMillisecondsDelayBeforeNewRangingRequest;
 
@@ -153,10 +160,12 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
         mSampleSizeEditText = findViewById(R.id.stats_window_size_edit_value);
         mSampleSizeEditText.setText(SAMPLE_SIZE_DEFAULT + "");
 
-        mMillisecondsDelayBeforeNewRangingRequestEditText =
-                findViewById(R.id.ranging_period_edit_value);
-        mMillisecondsDelayBeforeNewRangingRequestEditText.setText(
-                MILLISECONDS_DELAY_BEFORE_NEW_RANGING_REQUEST_DEFAULT + "");
+        mLocationEditText = findViewById(R.id.location_value);
+        mLocationEditText.setText(" ");
+
+        mPeriodEditText = findViewById(R.id.ranging_period_edit_value2);
+        mPeriodEditText.setText(MILLISECONDS_DELAY_BEFORE_NEW_RANGING_REQUEST_DEFAULT
+                + "\n" + MILLISECONDS_DELAY_BEFORE_NEW_RANGING_REQUEST_DEFAULT*2);
 
         // Retrieve ScanResult from Intent.
         Intent intent = getIntent();
@@ -197,6 +206,8 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
         mRssiHistory = new ArrayList<>();
         mNumSuccessfulMeasurementsHistory = new ArrayList<>();
 
+        resetRangingPeriod();
+
         resetData();
         openFile();
 
@@ -205,10 +216,11 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         saveData();
         mfile.delete();
         finish();
+        super.onBackPressed();
+        //mRangeRequestDelayHandler.removeCallbacks();
     }
 
     public void onRequestPermissionsResult (int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -226,6 +238,7 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
     public void onResetButtonClick(View view) {
         saveData();
         mfile.delete();
+        resetRangingPeriod();
         resetData();
         openFile();
     }
@@ -237,12 +250,25 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
         openFile();
     }
 
+    private void resetRangingPeriod() {
+        String[] multiLines = mPeriodEditText.getText().toString().split("\n");
+        mPeriodRequest = multiLines.length;
+        mPeriod = new int[multiLines.length];
+        for(int i=0; i < multiLines.length; i++) {
+            mPeriod[i] = Integer.parseInt(multiLines[i]);
+        }
+        mPeriodFlag = 0;
+    }
+
     private void resetData() {
         mSampleSize = Integer.parseInt(mSampleSizeEditText.getText().toString());
 
-        mMillisecondsDelayBeforeNewRangingRequest =
-                Integer.parseInt(
-                        mMillisecondsDelayBeforeNewRangingRequestEditText.getText().toString());
+        if (mPeriodFlag == mPeriodRequest) {
+            resetRangingPeriod();
+        }
+        mMillisecondsDelayBeforeNewRangingRequest = mPeriod[mPeriodFlag++];
+
+        mLocation = mLocationEditText.getText().toString();
 
         mNumberOfSuccessfulRangeRequests = 0;
         mNumberOfRangeRequests = 0;
@@ -255,6 +281,7 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
 
         mNumSuccessfulMeasurementsHistoryEndIndex = 0;
         mNumSuccessfulMeasurementsHistory.clear();
+
     }
 
     private void startRangingRequest() {
@@ -402,7 +429,7 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
         }
 
         mStartTime = Calendar.getInstance().getTime();
-        mFilename =  mStartTime.toString() + ".txt";
+        mFilename =  String.format("%1$ta %1$tm-%1$td %1$tH:%1$tM:%1$tS", mStartTime) + ".txt";
 
         mfile = new File(Environment.getExternalStorageDirectory().getAbsolutePath(), mFilename);
         try {
@@ -435,19 +462,22 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
                 }
 
                 String[] splited = inputLine.split("\\s+");
-                Toast.makeText(this, splited[1], Toast.LENGTH_SHORT).show();
                 int num = Integer.parseInt(splited[1]);
 
                 FileOutputStream fos = new FileOutputStream(file, true);
-                String content = String.format("%8s %20s %20s %10s %10s %10s %10s %10s\n",
-                        num+1, mScanResult.SSID, mMAC, mScanResult.frequency, mScanResult.channelWidth, mSampleSize, mMillisecondsDelayBeforeNewRangingRequest, elapsed);
+                String content = String.format("%4s %22s %20s %20s %20s %10s %10s %10s %10s %10s\n",
+                        num+1, mFilename, mLocation, mScanResult.SSID, mMAC, mScanResult.frequency,
+                        mScanResult.channelWidth, mSampleSize, mMillisecondsDelayBeforeNewRangingRequest, elapsed);
                 fos.write(content.getBytes());
                 fos.close();
             } else {
                 FileOutputStream fos = new FileOutputStream(file);
-                String header = String.format("%8s %20s %20s %10s %10s %10s %10s %10s\n", "Num", "SSID", "BSSID", "Channel", "Bandwidth","Requests", "Period", "Elapsed");
-                String content = String.format("%8s %20s %20s %10s %10s %10s %10s %10s\n",
-                        1, mScanResult.SSID, mMAC, mScanResult.frequency, mScanResult.channelWidth, mSampleSize, mMillisecondsDelayBeforeNewRangingRequest, elapsed);
+                String header = String.format("%4s %22s %20s %20s %20s %10s %10s %10s %10s %10s\n",
+                        "Num", "File_Name", "Location", "SSID", "BSSID", "Channel",
+                        "Bandwidth","Requests", "Period", "Elapsed");
+                String content = String.format("%4s %22s %20s %20s %20s %10s %10s %10s %10s %10s\n",
+                        1, mFilename, mLocation, mScanResult.SSID, mMAC, mScanResult.frequency,
+                        mScanResult.channelWidth, mSampleSize, mMillisecondsDelayBeforeNewRangingRequest, elapsed);
                 fos.write(header.getBytes());
                 fos.write(content.getBytes());
                 fos.close();
