@@ -13,16 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.wifirttscan;
+package com.example.android.rttsurvey;
 
+import android.content.Context;
+import android.graphics.Color;
 import android.net.wifi.ScanResult;
+
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,11 +44,15 @@ public class MyAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     private static ScanResultClickListener sScanResultClickListener;
 
-    private List<ScanResult> mWifiAccessPointsWithRtt;
+    private List<ScanResult> mWifiAccessPointsWithRtt, selected;
+
+    private static final String TAG = "Recycler";
+
 
     public MyAdapter(List<ScanResult> list, ScanResultClickListener scanResultClickListener) {
-        mWifiAccessPointsWithRtt = list;
-        sScanResultClickListener = scanResultClickListener;
+        this.mWifiAccessPointsWithRtt = list;
+        this.sScanResultClickListener = scanResultClickListener;
+        this.selected = new ArrayList<>();
     }
 
     public static class ViewHolderHeader extends RecyclerView.ViewHolder {
@@ -63,7 +74,7 @@ public class MyAdapter extends RecyclerView.Adapter<ViewHolder> {
 
         @Override
         public void onClick(View view) {
-            sScanResultClickListener.onScanResultItemClick(getItem(getAdapterPosition()));
+            //sScanResultClickListener.onScanResultItemClick(getItem(getAdapterPosition()));
         }
     }
 
@@ -103,7 +114,29 @@ public class MyAdapter extends RecyclerView.Adapter<ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, int position) {
+    public void onBindViewHolder(final ViewHolder viewHolder, int position) {
+        // Change color when the recyclerview is onclick
+        if (position > 0) {
+            final ScanResult item = getItem(position);
+
+            viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (selected.contains(item)) {
+                        selected.remove(item);
+                        unhighlightView(viewHolder);
+                    } else {
+                        selected.add(item);
+                        highlightView(viewHolder);
+                    }
+                    Log.d(TAG, "ScanResultItemClick ");
+                }
+            });
+            if (selected.contains(item))
+                highlightView(viewHolder);
+            else
+                unhighlightView(viewHolder);
+        }
 
         if (viewHolder instanceof ViewHolderHeader) {
             // No updates need to be made to header view (defaults remain same).
@@ -118,6 +151,14 @@ public class MyAdapter extends RecyclerView.Adapter<ViewHolder> {
         } else {
             throw new RuntimeException(viewHolder + " isn't a valid view holder.");
         }
+    }
+
+    private void highlightView(ViewHolder holder) {
+        holder.itemView.setBackgroundColor(Color.parseColor("#78C5EF"));
+    }
+
+    private void unhighlightView(ViewHolder holder) {
+        holder.itemView.setBackgroundColor(Color.parseColor("#FFFFFF"));
     }
 
     /*
@@ -141,6 +182,10 @@ public class MyAdapter extends RecyclerView.Adapter<ViewHolder> {
         } else {
             return TYPE_ITEM;
         }
+    }
+
+    public List<ScanResult> getSelected() {
+        return selected;
     }
 
     // Used to inform the class containing the RecyclerView that one of the ScanResult items in the

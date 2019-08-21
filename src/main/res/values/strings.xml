@@ -46,6 +46,10 @@
     <string name="number_of_requests_label_activity_access_point_ranging_results">Number of requests:</string>
     <string name="mac_mismatch_message_activity_access_point_ranging_results">Callback MAC address doesn\'t match original request MAC address.</string>
     <string name="ranging_period_label_location">Location:</string>
-    <string name="save">Save</string>
+    <string name="save_label_activity_access_point_ranging_results">Save</string>
+    <string name="start_survey_button_label">START SURVEY</string>
+    <string name="title_ranging_survey">Ranging Survey</string>
+    <string name="survey_range_label">Range:</string>
+    <string name="survey_rssi_label">Rssi:</string>
 
 </resources>

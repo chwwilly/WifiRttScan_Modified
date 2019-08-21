@@ -13,11 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.wifirttscan;
-//import com.example.android.wifirttscan.MailService;
+package com.example.android.rttsurvey;
 
-
-import android.Manifest;
 import android.Manifest.permission;
 import android.content.Context;
 import android.content.Intent;
@@ -59,7 +56,7 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
     private static final String TAG = "APRRActivity";
 
     public static final String SCAN_RESULT_EXTRA =
-            "com.example.android.wifirttscan.extra.SCAN_RESULT";
+            "com.example.android.rttsurvey.extra.SCAN_RESULT";
 
     private static final int SAMPLE_SIZE_DEFAULT = 1000;
     private static final int MILLISECONDS_DELAY_BEFORE_NEW_RANGING_REQUEST_DEFAULT = 1000;
@@ -164,8 +161,9 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
         mLocationEditText.setText(" ");
 
         mPeriodEditText = findViewById(R.id.ranging_period_edit_value2);
-        mPeriodEditText.setText(MILLISECONDS_DELAY_BEFORE_NEW_RANGING_REQUEST_DEFAULT
-                + "\n" + MILLISECONDS_DELAY_BEFORE_NEW_RANGING_REQUEST_DEFAULT*2);
+        mPeriodEditText.setText(MILLISECONDS_DELAY_BEFORE_NEW_RANGING_REQUEST_DEFAULT/2
+                + "\n" + MILLISECONDS_DELAY_BEFORE_NEW_RANGING_REQUEST_DEFAULT);
+                //+ "\n" + MILLISECONDS_DELAY_BEFORE_NEW_RANGING_REQUEST_DEFAULT);
 
         // Retrieve ScanResult from Intent.
         Intent intent = getIntent();
@@ -218,9 +216,9 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
     public void onBackPressed() {
         saveData();
         mfile.delete();
+        mRangeRequestDelayHandler.removeCallbacksAndMessages(null);
         finish();
         super.onBackPressed();
-        //mRangeRequestDelayHandler.removeCallbacks();
     }
 
     public void onRequestPermissionsResult (int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -258,6 +256,7 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
             mPeriod[i] = Integer.parseInt(multiLines[i]);
         }
         mPeriodFlag = 0;
+        Log.d(TAG, "Ranging period reset ");
     }
 
     private void resetData() {
@@ -571,9 +570,11 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
 
                         mNumberOfRequestsTextView.setText(mNumberOfRangeRequests + "");
 
+                        if (mNumberOfRangeRequests != 0) {
+                            wrtieData(mNumberOfRangeRequests, rangingResult.getDistanceMm(), rangingResult.getDistanceStdDevMm(),
+                                    rangingResult.getRssi(), rangingResult.getNumSuccessfulMeasurements());
+                        }
 
-                        wrtieData(mNumberOfRangeRequests, rangingResult.getDistanceMm(), rangingResult.getDistanceStdDevMm(),
-                                rangingResult.getRssi(), rangingResult.getNumSuccessfulMeasurements());
                     } else if (rangingResult.getStatus()
                             == RangingResult.STATUS_RESPONDER_DOES_NOT_SUPPORT_IEEE80211MC) {
                         Log.d(TAG, "RangingResult failed (AP doesn't support IEEE80211 MC.");

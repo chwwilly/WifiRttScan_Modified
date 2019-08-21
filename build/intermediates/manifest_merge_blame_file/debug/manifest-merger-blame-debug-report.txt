@@ -15,100 +15,111 @@
 15 limitations under the License.
 16-->
 17<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-18    package="com.example.android.wifirttscan"
+18    package="com.example.android.rttsurvey"
 19    android:versionCode="1"
 20    android:versionName="1.0" >
 21
 22    <uses-sdk
 23        android:minSdkVersion="28"
-23-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml
+23-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml
 24        android:targetSdkVersion="28" />
-24-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml
+24-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml
 25
-26    <uses-feature android:name="android.hardware.wifi.rtt" />
-26-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:22:5-62
-26-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:22:19-59
+26    <uses-feature android:name="android.hardware.rttsurvey" />
+26-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:22:5-63
+26-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:22:19-60
 27
 28    <!-- Permissions required for Wifi RTT. -->
 29    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-29-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:25:5-79
-29-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:25:22-76
+29-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:25:5-79
+29-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:25:22-76
 30    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-30-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:26:5-76
-30-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:26:22-73
+30-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:26:5-76
+30-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:26:22-73
 31    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-31-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:27:5-76
-31-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:27:22-73
+31-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:27:5-76
+31-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:27:22-73
 32    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-32-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:28:5-81
-32-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:28:22-78
+32-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:28:5-81
+32-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:28:22-78
 33    <uses-permission android:name="android.permission.INTERNET" />
-33-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:29:5-67
-33-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:29:22-64
+33-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:29:5-67
+33-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:29:22-64
 34    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
-34-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:30:5-83
-34-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:30:22-81
+34-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:30:5-83
+34-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:30:22-81
 35
 36    <application
-36-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:32:5-63:19
+36-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:32:5-70:19
 37        android:allowBackup="true"
-37-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:33:9-35
+37-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:33:9-35
 38        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 38-->[androidx.core:core:1.0.0-beta01] C:\Users\User\.gradle\caches\transforms-2\files-2.1\99af77807b792c490d234813834f6fae\core-1.0.0-beta01\AndroidManifest.xml:22:18-86
 39        android:debuggable="true"
 40        android:extractNativeLibs="false"
 41        android:icon="@mipmap/ic_launcher"
-41-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:34:9-43
+41-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:34:9-43
 42        android:label="@string/app_name"
-42-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:35:9-41
+42-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:35:9-41
 43        android:roundIcon="@mipmap/ic_launcher_round"
-43-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:36:9-54
+43-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:36:9-54
 44        android:supportsRtl="true"
-44-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:37:9-35
+44-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:37:9-35
 45        android:testOnly="true"
 46        android:theme="@style/CustomAppTheme" >
-46-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:38:9-46
+46-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:38:9-46
 47        <activity
-47-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:40:9-49:20
-48            android:name="com.example.android.wifirttscan.MainActivity"
-48-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:41:13-41
+47-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:40:9-49:20
+48            android:name="com.example.android.rttsurvey.MainActivity"
+48-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:41:13-70
 49            android:label="@string/app_name"
-49-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:42:13-45
+49-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:42:13-45
 50            android:theme="@style/CustomAppTheme" >
-50-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:43:13-50
+50-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:43:13-50
 51            <intent-filter>
-51-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:44:13-48:29
+51-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:44:13-48:29
 52                <action android:name="android.intent.action.MAIN" />
-52-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:45:17-69
-52-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:45:25-66
+52-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:45:17-69
+52-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:45:25-66
 53
 54                <category android:name="android.intent.category.LAUNCHER" />
-54-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:47:17-77
-54-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:47:27-74
+54-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:47:17-77
+54-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:47:27-74
 55            </intent-filter>
 56        </activity>
 57        <activity
-57-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:51:9-56:20
-58            android:name="com.example.android.wifirttscan.LocationPermissionRequestActivity"
-58-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:52:13-62
+57-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:51:9-56:20
+58            android:name="com.example.android.rttsurvey.LocationPermissionRequestActivity"
+58-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:52:13-91
 59            android:label="@string/title_activity_location_permission_request"
-59-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:53:13-79
-60            android:parentActivityName="com.example.android.wifirttscan.MainActivity"
-60-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:54:13-55
+59-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:53:13-79
+60            android:parentActivityName="com.example.android.rttsurvey.MainActivity"
+60-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:54:13-84
 61            android:theme="@style/CustomAppTheme" >
-61-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:55:13-50
+61-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:55:13-50
 62        </activity>
 63        <activity
-63-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:58:9-62:20
-64            android:name="com.example.android.wifirttscan.AccessPointRangingResultsActivity"
-64-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:58:19-68
-65            android:label="@string/title_activity_access_point_ranging_results"
-65-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:59:13-80
-66            android:parentActivityName="com.example.android.wifirttscan.MainActivity"
-66-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:60:13-55
+63-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:58:9-63:20
+64            android:name="com.example.android.rttsurvey.RangingSurveyActivity"
+64-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:59:13-79
+65            android:label="@string/title_ranging_survey"
+65-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:60:13-57
+66            android:parentActivityName="com.example.android.rttsurvey.MainActivity"
+66-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:61:13-84
 67            android:theme="@style/CustomAppTheme" >
-67-->D:\User\Documents\App\android-WifiRttScan-master_modified\Application\src\main\AndroidManifest.xml:61:13-50
+67-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:62:13-50
 68        </activity>
-69    </application>
-70
-71</manifest>
+69        <activity
+69-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:65:9-69:20
+70            android:name="com.example.android.rttsurvey.AccessPointRangingResultsActivity"
+70-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:65:19-97
+71            android:label="@string/title_activity_access_point_ranging_results"
+71-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:66:13-80
+72            android:parentActivityName="com.example.android.rttsurvey.MainActivity"
+72-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:67:13-84
+73            android:theme="@style/CustomAppTheme" >
+73-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:68:13-50
+74        </activity>
+75    </application>
+76
+77</manifest>

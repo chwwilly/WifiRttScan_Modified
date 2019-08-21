@@ -13,9 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.wifirttscan;
+package com.example.android.rttsurvey;
 
-import static com.example.android.wifirttscan.AccessPointRangingResultsActivity.SCAN_RESULT_EXTRA;
+import static com.example.android.rttsurvey.AccessPointRangingResultsActivity.SCAN_RESULT_EXTRA;
+import static com.example.android.rttsurvey.RangingSurveyActivity.SURVEY_EXTRA;
 
 import android.Manifest.permission;
 import android.annotation.SuppressLint;
@@ -27,7 +28,6 @@ import android.content.pm.PackageManager;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.net.wifi.rtt.RangingRequest;
-import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -36,11 +36,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.LayoutManager;
 
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.android.wifirttscan.MyAdapter.ScanResultClickListener;
+import com.example.android.rttsurvey.MyAdapter.ScanResultClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -125,18 +126,24 @@ public class MainActivity extends AppCompatActivity implements ScanResultClickLi
         Intent intent = new Intent(this, AccessPointRangingResultsActivity.class);
         intent.putExtra(SCAN_RESULT_EXTRA, scanResult);
         startActivity(intent);
+
     }
 
     public void onClickFindDistancesToAccessPoints(View view) {
         if (mLocationPermissionApproved) {
             logToUi(getString(R.string.retrieving_access_points));
             mWifiManager.startScan();
-
         } else {
             // On 23+ (M+) devices, fine location permission not granted. Request permission.
             Intent startIntent = new Intent(this, LocationPermissionRequestActivity.class);
             startActivity(startIntent);
         }
+    }
+
+    public void onClickStartSurvey(View view) {
+        Intent intent = new Intent(this, RangingSurveyActivity.class);
+        intent.putParcelableArrayListExtra(SURVEY_EXTRA, (ArrayList<? extends Parcelable>) mAdapter.getSelected());
+        startActivity(intent);
     }
 
     private class WifiScanReceiver extends BroadcastReceiver {
@@ -147,8 +154,8 @@ public class MainActivity extends AppCompatActivity implements ScanResultClickLi
 
             for (ScanResult scanResult : originalList) {
 
-                //newList.add(scanResult);
                 if (scanResult.is80211mcResponder()) {
+                    //Log.d(TAG, scanResult+"");
                     newList.add(scanResult);
                 }
 

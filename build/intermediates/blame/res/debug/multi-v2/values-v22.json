@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\User\\Documents\\App\\android-WifiRttScan-master_modified\\Application\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v22\\values-v22.xml",
+            "outputFile": "D:\\User\\Documents\\App\\RttSurvey\\Application\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v22\\values-v22.xml",
             "map": [
                 {
                     "source": "C:\\Users\\User\\.gradle\\caches\\transforms-2\\files-2.1\\040a6f074f1c65b62d8f123c18354f26\\appcompat-1.0.0-beta01\\res\\values-v22\\values-v22.xml",

@@ -1,4 +1,4 @@
-com.example.android.wifirttscan
+com.example.android.rttsurvey
 anim abc_fade_in
 anim abc_fade_out
 anim abc_grow_fade_in_from_bottom
@@ -1140,6 +1140,7 @@ id action_mode_close_button
 id action_text
 id actions
 id activity_chooser_view_content
+id activity_survey
 id add
 id alertTitle
 id all
@@ -1337,6 +1338,7 @@ id ssid
 id ssid_text_view
 id standard
 id start
+id start_survey
 id stats_window_size_edit_value
 id stats_window_size_label
 id stretch
@@ -1346,6 +1348,13 @@ id success_ratio_label
 id success_ratio_value
 id successes_in_burst_label
 id successes_in_burst_value
+id survey_bssid_text_view
+id survey_range_label
+id survey_range_text_view
+id survey_recycler_view
+id survey_rssi_label
+id survey_rssi_text_view
+id survey_ssid_text_view
 id tabMode
 id tag_transition_group
 id tag_unhandled_key_event_manager
@@ -1375,6 +1384,8 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id tv
+id tv_survey
 id uniform
 id unlabeled
 id up
@@ -1434,6 +1445,7 @@ layout abc_tooltip
 layout activity_access_point_ranging_results
 layout activity_location_permission_request
 layout activity_main
+layout activity_survey_ranging_results
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
@@ -1457,6 +1469,7 @@ layout notification_template_part_chronometer
 layout notification_template_part_time
 layout recycler_row_header
 layout recycler_row_item
+layout recycler_row_survey
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
@@ -1518,6 +1531,7 @@ string fab_transformation_sheet_behavior
 string hide_bottom_view_on_scroll_behavior
 string intro_message
 string introduction_text
+string k
 string mac_mismatch_message_activity_access_point_ranging_results
 string main_message_activity_location_permission_request
 string mtrl_chip_close_icon_content_description
@@ -1539,15 +1553,19 @@ string recycler_row_header_label_ssid
 string reset_label_activity_access_point_ranging_results
 string retrieving_access_points
 string rssi_label_activity_access_point_ranging_results
-string save
+string save_label_activity_access_point_ranging_results
 string scan_wifi_button_label
 string search_menu_title
+string start_survey_button_label
 string stats_window_size_label_activity_access_point_ranging_results
 string status_bar_notification_info_overflow
 string success_ratio_label_activity_access_point_ranging_results
 string successes_in_burst_label_activity_access_point_ranging_results
+string survey_range_label
+string survey_rssi_label
 string title_activity_access_point_ranging_results
 string title_activity_location_permission_request
+string title_ranging_survey
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog

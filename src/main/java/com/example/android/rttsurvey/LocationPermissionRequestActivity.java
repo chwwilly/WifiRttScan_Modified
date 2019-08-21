@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.wifirttscan;
+package com.example.android.rttsurvey;
 
 import android.Manifest;
 import android.Manifest.permission;
