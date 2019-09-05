@@ -42,6 +42,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.android.rttsurvey.MyAdapter.ScanResultClickListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -186,7 +188,6 @@ public class MainActivity extends AppCompatActivity implements ScanResultClickLi
                                     + " RTT capable.");
 
                 } else {
-                    // TODO (jewalker): Add Snackbar regarding permissions
                     Log.d(TAG, "Permissions not allowed.");
                 }
             }

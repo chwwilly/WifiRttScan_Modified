@@ -2,7 +2,6 @@ package com.example.android.rttsurvey;
 
 import android.net.wifi.ScanResult;
 import android.net.wifi.rtt.RangingResult;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 import java.util.List;
 
 public class SurveyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-    private static final String TAG = "APRRActivity";
 
     SurveyAdapter.ViewHolderItem mViewHolderItem;
 

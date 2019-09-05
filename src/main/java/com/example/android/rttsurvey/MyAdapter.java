@@ -30,7 +30,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+
+import static java.lang.Math.pow;
 
 /**
  * Displays the ssid and bssid from a list of {@link ScanResult}s including a header at the top of
@@ -185,7 +189,26 @@ public class MyAdapter extends RecyclerView.Adapter<ViewHolder> {
     }
 
     public List<ScanResult> getSelected() {
+        Comparator<ScanResult> comparator = new Comparator<ScanResult>() {
+            @Override
+            public int compare(ScanResult ap1, ScanResult ap2) {
+                int mac1 = macToInt(ap1.BSSID);
+                int mac2 = macToInt(ap2.BSSID);
+                return (mac1 < mac2 ? -1 : (mac1 == mac2 ? 0 : 1));
+            }
+        };
+        Collections.sort(selected, comparator);
         return selected;
+    }
+
+    private int macToInt (String mac) {
+        String[] macParts = mac.split(":");
+        int macInt = 0;
+        for(int i=0; i<6; i++){
+            Integer hex = Integer.parseInt(macParts[i], 16);
+            macInt += hex.byteValue() * pow(16, i);
+        }
+        return macInt;
     }
 
     // Used to inform the class containing the RecyclerView that one of the ScanResult items in the

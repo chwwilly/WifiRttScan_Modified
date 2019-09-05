@@ -1,8 +1,7 @@
-
 buildscript {
     repositories {
-        jcenter()
         google()
+        jcenter()
     }
 
     dependencies {
@@ -10,19 +9,24 @@ buildscript {
     }
 }
 
-apply plugin: 'com.android.application'
-
 repositories {
     jcenter()
     google()
 }
 
-dependencies {
-    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha1'
-    implementation 'com.google.android.material:material:1.0.0-beta01'
+apply plugin: 'com.android.application'
+
+dependencies { //google-services
+    implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta2'
+    implementation 'com.google.android.material:material:1.1.0-alpha09'
     implementation files('libs/mail.jar')
     implementation files('libs/activation.jar')
+    implementation 'com.google.firebase:firebase-database:19.0.0'
+    // add the Firebase SDK for Google Analytics
+    implementation 'com.google.firebase:firebase-analytics:17.2.0'
+    // add SDKs for any other desired Firebase products
+    // https://firebase.google.com/docs/android/setup#available-libraries
 }
 
 // The sample build uses multiple directories to
@@ -35,8 +39,7 @@ List<String> dirs = [
 
 android {
     compileSdkVersion 28
-
-    buildToolsVersion "27.0.3"
+    buildToolsVersion "28.0.3"
 
     defaultConfig {
         minSdkVersion 28
@@ -57,7 +60,7 @@ android {
         }
         androidTest.setRoot('tests')
         androidTest.java.srcDirs = ['tests/src']
-
     }
-
 }
+
+apply plugin: 'com.google.gms.google-services'

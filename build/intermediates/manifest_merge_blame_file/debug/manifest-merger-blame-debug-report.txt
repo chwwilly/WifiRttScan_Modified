@@ -48,78 +48,206 @@
 34    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
 34-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:30:5-83
 34-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:30:22-81
-35
-36    <application
-36-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:32:5-70:19
-37        android:allowBackup="true"
-37-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:33:9-35
-38        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-38-->[androidx.core:core:1.0.0-beta01] C:\Users\User\.gradle\caches\transforms-2\files-2.1\99af77807b792c490d234813834f6fae\core-1.0.0-beta01\AndroidManifest.xml:22:18-86
-39        android:debuggable="true"
-40        android:extractNativeLibs="false"
-41        android:icon="@mipmap/ic_launcher"
-41-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:34:9-43
-42        android:label="@string/app_name"
-42-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:35:9-41
-43        android:roundIcon="@mipmap/ic_launcher_round"
-43-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:36:9-54
-44        android:supportsRtl="true"
-44-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:37:9-35
-45        android:testOnly="true"
-46        android:theme="@style/CustomAppTheme" >
-46-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:38:9-46
-47        <activity
-47-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:40:9-49:20
-48            android:name="com.example.android.rttsurvey.MainActivity"
-48-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:41:13-70
-49            android:label="@string/app_name"
-49-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:42:13-45
-50            android:theme="@style/CustomAppTheme" >
-50-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:43:13-50
-51            <intent-filter>
-51-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:44:13-48:29
-52                <action android:name="android.intent.action.MAIN" />
-52-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:45:17-69
-52-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:45:25-66
-53
-54                <category android:name="android.intent.category.LAUNCHER" />
-54-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:47:17-77
-54-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:47:27-74
-55            </intent-filter>
-56        </activity>
-57        <activity
-57-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:51:9-56:20
-58            android:name="com.example.android.rttsurvey.LocationPermissionRequestActivity"
-58-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:52:13-91
-59            android:label="@string/title_activity_location_permission_request"
-59-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:53:13-79
-60            android:parentActivityName="com.example.android.rttsurvey.MainActivity"
-60-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:54:13-84
-61            android:theme="@style/CustomAppTheme" >
-61-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:55:13-50
-62        </activity>
-63        <activity
-63-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:58:9-63:20
-64            android:name="com.example.android.rttsurvey.RangingSurveyActivity"
-64-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:59:13-79
-65            android:label="@string/title_ranging_survey"
-65-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:60:13-57
-66            android:parentActivityName="com.example.android.rttsurvey.MainActivity"
-66-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:61:13-84
-67            android:theme="@style/CustomAppTheme" >
-67-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:62:13-50
-68        </activity>
-69        <activity
-69-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:65:9-69:20
-70            android:name="com.example.android.rttsurvey.AccessPointRangingResultsActivity"
-70-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:65:19-97
-71            android:label="@string/title_activity_access_point_ranging_results"
-71-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:66:13-80
-72            android:parentActivityName="com.example.android.rttsurvey.MainActivity"
-72-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:67:13-84
-73            android:theme="@style/CustomAppTheme" >
-73-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:68:13-50
-74        </activity>
-75    </application>
-76
-77</manifest>
+35    <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
+36    <!-- <uses-sdk android:minSdkVersion="14"/> -->
+37    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+37-->[com.google.firebase:firebase-database:19.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\77a6367dbc55137f2e0b892610eb4e05\firebase-database-19.0.0\AndroidManifest.xml:25:5-79
+37-->[com.google.firebase:firebase-database:19.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\77a6367dbc55137f2e0b892610eb4e05\firebase-database-19.0.0\AndroidManifest.xml:25:22-76
+38    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+38-->[com.google.android.gms:play-services-measurement-api:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\3d78777c1f441d266a672d808a3789a8\play-services-measurement-api-17.2.0\AndroidManifest.xml:24:5-68
+38-->[com.google.android.gms:play-services-measurement-api:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\3d78777c1f441d266a672d808a3789a8\play-services-measurement-api-17.2.0\AndroidManifest.xml:24:22-65
+39    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+39-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\8de79a004ba10dfe23a32777b193ead3\firebase-iid-19.0.0\AndroidManifest.xml:26:5-82
+39-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\8de79a004ba10dfe23a32777b193ead3\firebase-iid-19.0.0\AndroidManifest.xml:26:22-79
+40    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+40-->[com.google.android.gms:play-services-measurement:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\64a31a2eb782d5f99a57d73ce8cc3770\play-services-measurement-17.2.0\AndroidManifest.xml:26:5-110
+40-->[com.google.android.gms:play-services-measurement:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\64a31a2eb782d5f99a57d73ce8cc3770\play-services-measurement-17.2.0\AndroidManifest.xml:26:22-107
+41
+42    <application
+42-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:32:5-70:19
+43        android:allowBackup="true"
+43-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:33:9-35
+44        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+44-->[androidx.core:core:1.1.0-rc02] C:\Users\User\.gradle\caches\transforms-2\files-2.1\ae84f627fcc7e21627cdf4f0101029bd\core-1.1.0-rc02\AndroidManifest.xml:24:18-86
+45        android:debuggable="true"
+46        android:icon="@mipmap/ic_launcher"
+46-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:34:9-43
+47        android:label="@string/app_name"
+47-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:35:9-41
+48        android:roundIcon="@mipmap/ic_launcher_round"
+48-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:36:9-54
+49        android:supportsRtl="true"
+49-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:37:9-35
+50        android:testOnly="true"
+51        android:theme="@style/CustomAppTheme" >
+51-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:38:9-46
+52        <activity
+52-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:40:9-49:20
+53            android:name="com.example.android.rttsurvey.MainActivity"
+53-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:41:13-70
+54            android:label="@string/app_name"
+54-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:42:13-45
+55            android:theme="@style/CustomAppTheme" >
+55-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:43:13-50
+56            <intent-filter>
+56-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:44:13-48:29
+57                <action android:name="android.intent.action.MAIN" />
+57-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:45:17-69
+57-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:45:25-66
+58
+59                <category android:name="android.intent.category.LAUNCHER" />
+59-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:47:17-77
+59-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:47:27-74
+60            </intent-filter>
+61        </activity>
+62        <activity
+62-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:51:9-56:20
+63            android:name="com.example.android.rttsurvey.LocationPermissionRequestActivity"
+63-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:52:13-91
+64            android:label="@string/title_activity_location_permission_request"
+64-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:53:13-79
+65            android:parentActivityName="com.example.android.rttsurvey.MainActivity"
+65-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:54:13-84
+66            android:theme="@style/CustomAppTheme" >
+66-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:55:13-50
+67        </activity>
+68        <activity
+68-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:58:9-63:20
+69            android:name="com.example.android.rttsurvey.RangingSurveyActivity"
+69-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:59:13-79
+70            android:label="@string/title_ranging_survey"
+70-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:60:13-57
+71            android:parentActivityName="com.example.android.rttsurvey.MainActivity"
+71-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:61:13-84
+72            android:theme="@style/CustomAppTheme" >
+72-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:62:13-50
+73        </activity>
+74        <activity
+74-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:65:9-69:20
+75            android:name="com.example.android.rttsurvey.AccessPointRangingResultsActivity"
+75-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:65:19-97
+76            android:label="@string/title_activity_access_point_ranging_results"
+76-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:66:13-80
+77            android:parentActivityName="com.example.android.rttsurvey.MainActivity"
+77-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:67:13-84
+78            android:theme="@style/CustomAppTheme" >
+78-->D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:68:13-50
+79        </activity>
+80
+81        <service
+81-->[com.google.firebase:firebase-database:19.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\77a6367dbc55137f2e0b892610eb4e05\firebase-database-19.0.0\AndroidManifest.xml:29:9-35:19
+82            android:name="com.google.firebase.components.ComponentDiscoveryService"
+82-->[com.google.firebase:firebase-database:19.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\77a6367dbc55137f2e0b892610eb4e05\firebase-database-19.0.0\AndroidManifest.xml:30:13-84
+83            android:exported="false" >
+83-->[com.google.firebase:firebase-database:19.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\77a6367dbc55137f2e0b892610eb4e05\firebase-database-19.0.0\AndroidManifest.xml:31:13-37
+84            <meta-data
+84-->[com.google.firebase:firebase-database:19.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\77a6367dbc55137f2e0b892610eb4e05\firebase-database-19.0.0\AndroidManifest.xml:32:13-34:85
+85                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+85-->[com.google.firebase:firebase-database:19.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\77a6367dbc55137f2e0b892610eb4e05\firebase-database-19.0.0\AndroidManifest.xml:33:17-109
+86                android:value="com.google.firebase.components.ComponentRegistrar" />
+86-->[com.google.firebase:firebase-database:19.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\77a6367dbc55137f2e0b892610eb4e05\firebase-database-19.0.0\AndroidManifest.xml:34:17-82
+87            <meta-data
+87-->[com.google.android.gms:play-services-measurement-api:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\3d78777c1f441d266a672d808a3789a8\play-services-measurement-api-17.2.0\AndroidManifest.xml:30:13-32:85
+88                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+88-->[com.google.android.gms:play-services-measurement-api:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\3d78777c1f441d266a672d808a3789a8\play-services-measurement-api-17.2.0\AndroidManifest.xml:31:17-139
+89                android:value="com.google.firebase.components.ComponentRegistrar" />
+89-->[com.google.android.gms:play-services-measurement-api:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\3d78777c1f441d266a672d808a3789a8\play-services-measurement-api-17.2.0\AndroidManifest.xml:32:17-82
+90            <meta-data
+90-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\8de79a004ba10dfe23a32777b193ead3\firebase-iid-19.0.0\AndroidManifest.xml:32:13-34:85
+91                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+91-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\8de79a004ba10dfe23a32777b193ead3\firebase-iid-19.0.0\AndroidManifest.xml:33:17-96
+92                android:value="com.google.firebase.components.ComponentRegistrar" />
+92-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\8de79a004ba10dfe23a32777b193ead3\firebase-iid-19.0.0\AndroidManifest.xml:34:17-82
+93        </service>
+94
+95        <receiver
+95-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\8de79a004ba10dfe23a32777b193ead3\firebase-iid-19.0.0\AndroidManifest.xml:37:9-44:20
+96            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+96-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\8de79a004ba10dfe23a32777b193ead3\firebase-iid-19.0.0\AndroidManifest.xml:38:13-78
+97            android:exported="true"
+97-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\8de79a004ba10dfe23a32777b193ead3\firebase-iid-19.0.0\AndroidManifest.xml:39:13-36
+98            android:permission="com.google.android.c2dm.permission.SEND" >
+98-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\8de79a004ba10dfe23a32777b193ead3\firebase-iid-19.0.0\AndroidManifest.xml:40:13-73
+99            <intent-filter>
+99-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\8de79a004ba10dfe23a32777b193ead3\firebase-iid-19.0.0\AndroidManifest.xml:41:13-43:29
+100                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+100-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\8de79a004ba10dfe23a32777b193ead3\firebase-iid-19.0.0\AndroidManifest.xml:42:17-81
+100-->[com.google.firebase:firebase-iid:19.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\8de79a004ba10dfe23a32777b193ead3\firebase-iid-19.0.0\AndroidManifest.xml:42:25-78
+101            </intent-filter>
+102        </receiver>
+103
+104        <activity
+104-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\6b7665d27c6bb2c13ed0bb98aa8c021f\play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+105            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+105-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\6b7665d27c6bb2c13ed0bb98aa8c021f\play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+106            android:exported="false"
+106-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\6b7665d27c6bb2c13ed0bb98aa8c021f\play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+107            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+107-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\6b7665d27c6bb2c13ed0bb98aa8c021f\play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+108
+109        <provider
+109-->[com.google.firebase:firebase-common:19.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\cd7c93abd09ac58d127ab869e190884e\firebase-common-19.0.0\AndroidManifest.xml:12:9-16:39
+110            android:name="com.google.firebase.provider.FirebaseInitProvider"
+110-->[com.google.firebase:firebase-common:19.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\cd7c93abd09ac58d127ab869e190884e\firebase-common-19.0.0\AndroidManifest.xml:13:13-77
+111            android:authorities="com.example.android.rttsurvey.firebaseinitprovider"
+111-->[com.google.firebase:firebase-common:19.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\cd7c93abd09ac58d127ab869e190884e\firebase-common-19.0.0\AndroidManifest.xml:14:13-72
+112            android:exported="false"
+112-->[com.google.firebase:firebase-common:19.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\cd7c93abd09ac58d127ab869e190884e\firebase-common-19.0.0\AndroidManifest.xml:15:13-37
+113            android:initOrder="100" />
+113-->[com.google.firebase:firebase-common:19.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\cd7c93abd09ac58d127ab869e190884e\firebase-common-19.0.0\AndroidManifest.xml:16:13-36
+114
+115        <receiver
+115-->[com.google.android.gms:play-services-measurement:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\64a31a2eb782d5f99a57d73ce8cc3770\play-services-measurement-17.2.0\AndroidManifest.xml:29:9-33:20
+116            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+116-->[com.google.android.gms:play-services-measurement:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\64a31a2eb782d5f99a57d73ce8cc3770\play-services-measurement-17.2.0\AndroidManifest.xml:30:13-85
+117            android:enabled="true"
+117-->[com.google.android.gms:play-services-measurement:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\64a31a2eb782d5f99a57d73ce8cc3770\play-services-measurement-17.2.0\AndroidManifest.xml:31:13-35
+118            android:exported="false" >
+118-->[com.google.android.gms:play-services-measurement:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\64a31a2eb782d5f99a57d73ce8cc3770\play-services-measurement-17.2.0\AndroidManifest.xml:32:13-37
+119        </receiver>
+120        <receiver
+120-->[com.google.android.gms:play-services-measurement:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\64a31a2eb782d5f99a57d73ce8cc3770\play-services-measurement-17.2.0\AndroidManifest.xml:34:9-42:20
+121            android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
+121-->[com.google.android.gms:play-services-measurement:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\64a31a2eb782d5f99a57d73ce8cc3770\play-services-measurement-17.2.0\AndroidManifest.xml:35:13-100
+122            android:enabled="true"
+122-->[com.google.android.gms:play-services-measurement:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\64a31a2eb782d5f99a57d73ce8cc3770\play-services-measurement-17.2.0\AndroidManifest.xml:36:13-35
+123            android:exported="true"
+123-->[com.google.android.gms:play-services-measurement:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\64a31a2eb782d5f99a57d73ce8cc3770\play-services-measurement-17.2.0\AndroidManifest.xml:37:13-36
+124            android:permission="android.permission.INSTALL_PACKAGES" >
+124-->[com.google.android.gms:play-services-measurement:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\64a31a2eb782d5f99a57d73ce8cc3770\play-services-measurement-17.2.0\AndroidManifest.xml:38:13-69
+125            <intent-filter>
+125-->[com.google.android.gms:play-services-measurement:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\64a31a2eb782d5f99a57d73ce8cc3770\play-services-measurement-17.2.0\AndroidManifest.xml:39:13-41:29
+126                <action android:name="com.android.vending.INSTALL_REFERRER" />
+126-->[com.google.android.gms:play-services-measurement:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\64a31a2eb782d5f99a57d73ce8cc3770\play-services-measurement-17.2.0\AndroidManifest.xml:40:17-79
+126-->[com.google.android.gms:play-services-measurement:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\64a31a2eb782d5f99a57d73ce8cc3770\play-services-measurement-17.2.0\AndroidManifest.xml:40:25-76
+127            </intent-filter>
+128        </receiver>
+129
+130        <service
+130-->[com.google.android.gms:play-services-measurement:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\64a31a2eb782d5f99a57d73ce8cc3770\play-services-measurement-17.2.0\AndroidManifest.xml:44:9-47:40
+131            android:name="com.google.android.gms.measurement.AppMeasurementService"
+131-->[com.google.android.gms:play-services-measurement:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\64a31a2eb782d5f99a57d73ce8cc3770\play-services-measurement-17.2.0\AndroidManifest.xml:45:13-84
+132            android:enabled="true"
+132-->[com.google.android.gms:play-services-measurement:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\64a31a2eb782d5f99a57d73ce8cc3770\play-services-measurement-17.2.0\AndroidManifest.xml:46:13-35
+133            android:exported="false" />
+133-->[com.google.android.gms:play-services-measurement:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\64a31a2eb782d5f99a57d73ce8cc3770\play-services-measurement-17.2.0\AndroidManifest.xml:47:13-37
+134        <service
+134-->[com.google.android.gms:play-services-measurement:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\64a31a2eb782d5f99a57d73ce8cc3770\play-services-measurement-17.2.0\AndroidManifest.xml:48:9-52:72
+135            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+135-->[com.google.android.gms:play-services-measurement:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\64a31a2eb782d5f99a57d73ce8cc3770\play-services-measurement-17.2.0\AndroidManifest.xml:49:13-87
+136            android:enabled="true"
+136-->[com.google.android.gms:play-services-measurement:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\64a31a2eb782d5f99a57d73ce8cc3770\play-services-measurement-17.2.0\AndroidManifest.xml:50:13-35
+137            android:exported="false"
+137-->[com.google.android.gms:play-services-measurement:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\64a31a2eb782d5f99a57d73ce8cc3770\play-services-measurement-17.2.0\AndroidManifest.xml:51:13-37
+138            android:permission="android.permission.BIND_JOB_SERVICE" />
+138-->[com.google.android.gms:play-services-measurement:17.2.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\64a31a2eb782d5f99a57d73ce8cc3770\play-services-measurement-17.2.0\AndroidManifest.xml:52:13-69
+139
+140        <meta-data
+140-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\03216efa7b2747e0c3a8dde6693d013d\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+141            android:name="com.google.android.gms.version"
+141-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\03216efa7b2747e0c3a8dde6693d013d\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+142            android:value="@integer/google_play_services_version" />
+142-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\03216efa7b2747e0c3a8dde6693d013d\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+143    </application>
+144
+145</manifest>

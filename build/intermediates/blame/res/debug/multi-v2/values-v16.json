@@ -4,7 +4,7 @@
             "outputFile": "D:\\User\\Documents\\App\\RttSurvey\\Application\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v16\\values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\User\\.gradle\\caches\\transforms-2\\files-2.1\\99af77807b792c490d234813834f6fae\\core-1.0.0-beta01\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\User\\.gradle\\caches\\transforms-2\\files-2.1\\ae84f627fcc7e21627cdf4f0101029bd\\core-1.1.0-rc02\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\User\\.gradle\\caches\\transforms-2\\files-2.1\\040a6f074f1c65b62d8f123c18354f26\\appcompat-1.0.0-beta01\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\User\\.gradle\\caches\\transforms-2\\files-2.1\\5ee248262bfa7a0d16cd528984389129\\appcompat-1.1.0-rc01\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "315894344846",
+    "firebase_url": "https://rttsurvey-108d9.firebaseio.com",
+    "project_id": "rttsurvey-108d9",
+    "storage_bucket": "rttsurvey-108d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:315894344846:android:d3daca29703534c307addf",
+        "android_client_info": {
+          "package_name": "com.example.android.rttsurvey"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "315894344846-rf2sorntop8k5p28g300ei2796qrjt9o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPa_Vr8KaXgdYE-44epEiitggW1ZH10QI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "315894344846-rf2sorntop8k5p28g300ei2796qrjt9o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -305,7 +305,6 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
             Toast.makeText(this, "Saved", Toast.LENGTH_SHORT).show();
             writeDescribeFile();
             resetData();
-            //sendEmail();
             openFile();
         }
     }
@@ -485,25 +484,6 @@ public class AccessPointRangingResultsActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
-    protected void sendEmail() {
-        // TODO (chanwilly): Send email notification when measurement done
-        MailService mailer = new MailService("jhw1994@gmail.com","r05942023@g.ntu.edu.tw","Subject","TextBody", "<b>HtmlBody</b>");
-        try {
-            mailer.sendAuthenticated();
-        } catch (Exception e) {
-            Log.e(TAG, "Failed sending email.", e);
-        }
-
-        /*MailService mailer = new MailService("from@mydomain.com","to@domain.com","Subject","TextBody", "<b>HtmlBody</b>", (Attachment) null);
-        try {
-            mailer.sendAuthenticated();
-        } catch (Exception e) {
-            Log.e(AskTingTing.APP, "Failed sending email.", e);
-        }*/
-    }
-
-
 
     // Class that handles callbacks for all RangingRequests and issues new RangingRequests.
     private class RttRangingResultCallback extends RangingResultCallback {
