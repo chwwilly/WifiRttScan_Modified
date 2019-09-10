@@ -1,8 +1,8 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:17:1-71:12
-INJECTED from D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:17:1-71:12
-INJECTED from D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:17:1-71:12
+ADDED from D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:17:1-66:12
+INJECTED from D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:17:1-66:12
+INJECTED from D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:17:1-66:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-beta2] C:\Users\User\.gradle\caches\transforms-2\files-2.1\27e08ddca48605800b97ae976997dba3\constraintlayout-2.0.0-beta2\AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.android.material:material:1.1.0-alpha09] C:\Users\User\.gradle\caches\transforms-2\files-2.1\8d839a7c14d0b608ef6ccd7d14f510f3\material-1.1.0-alpha09\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.appcompat:appcompat:1.1.0-rc01] C:\Users\User\.gradle\caches\transforms-2\files-2.1\5ee248262bfa7a0d16cd528984389129\appcompat-1.1.0-rc01\AndroidManifest.xml:17:1-24:12
@@ -53,8 +53,8 @@ MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\User\.gradle\
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\abc92c8e282c3457e6a63ca207f0cbff\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\09fdc25bca93e089a1d974ff31f759e8\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-database-collection:17.0.0] C:\Users\User\.gradle\caches\transforms-2\files-2.1\2059668866cee65ec1b8601066f2063d\firebase-database-collection-17.0.0\AndroidManifest.xml:2:1-7:12
-INJECTED from D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:17:1-71:12
-INJECTED from D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:17:1-71:12
+INJECTED from D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:17:1-66:12
+INJECTED from D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:17:1-66:12
 	package
 		ADDED from D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:18:5-44
 	android:versionName
@@ -108,7 +108,7 @@ ADDED from D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.
 	android:name
 		ADDED from D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:30:22-81
 application
-ADDED from D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:32:5-70:19
+ADDED from D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:32:5-65:19
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-beta2] C:\Users\User\.gradle\caches\transforms-2\files-2.1\27e08ddca48605800b97ae976997dba3\constraintlayout-2.0.0-beta2\AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.0-beta2] C:\Users\User\.gradle\caches\transforms-2\files-2.1\27e08ddca48605800b97ae976997dba3\constraintlayout-2.0.0-beta2\AndroidManifest.xml:9:5-20
 MERGED from [com.google.android.material:material:1.1.0-alpha09] C:\Users\User\.gradle\caches\transforms-2\files-2.1\8d839a7c14d0b608ef6ccd7d14f510f3\material-1.1.0-alpha09\AndroidManifest.xml:22:5-20
@@ -203,16 +203,6 @@ ADDED from D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.
 		ADDED from D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:62:13-50
 	android:name
 		ADDED from D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:59:13-79
-activity#com.example.android.rttsurvey.AccessPointRangingResultsActivity
-ADDED from D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:65:9-69:20
-	android:parentActivityName
-		ADDED from D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:67:13-84
-	android:label
-		ADDED from D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:66:13-80
-	android:theme
-		ADDED from D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:68:13-50
-	android:name
-		ADDED from D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml:65:19-97
 uses-sdk
 INJECTED from D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\User\Documents\App\RttSurvey\Application\src\main\AndroidManifest.xml

@@ -15,7 +15,7 @@
  */
 package com.example.android.rttsurvey;
 
-import static com.example.android.rttsurvey.AccessPointRangingResultsActivity.SCAN_RESULT_EXTRA;
+//import static com.example.android.rttsurvey.AccessPointRangingResultsActivity.SCAN_RESULT_EXTRA;
 import static com.example.android.rttsurvey.RangingSurveyActivity.SURVEY_EXTRA;
 
 import android.Manifest.permission;
@@ -123,11 +123,6 @@ public class MainActivity extends AppCompatActivity implements ScanResultClickLi
 
     @Override
     public void onScanResultItemClick(ScanResult scanResult) {
-        Log.d(TAG, "onScanResultItemClick(): ssid: " + scanResult.SSID);
-
-        Intent intent = new Intent(this, AccessPointRangingResultsActivity.class);
-        intent.putExtra(SCAN_RESULT_EXTRA, scanResult);
-        startActivity(intent);
 
     }
 

@@ -72,12 +72,6 @@
             android:parentActivityName="com.example.android.rttsurvey.MainActivity"
             android:theme="@style/CustomAppTheme" >
         </activity>
-        <activity
-            android:name="com.example.android.rttsurvey.AccessPointRangingResultsActivity"
-            android:label="@string/title_activity_access_point_ranging_results"
-            android:parentActivityName="com.example.android.rttsurvey.MainActivity"
-            android:theme="@style/CustomAppTheme" >
-        </activity>
 
         <service
             android:name="com.google.firebase.components.ComponentDiscoveryService"

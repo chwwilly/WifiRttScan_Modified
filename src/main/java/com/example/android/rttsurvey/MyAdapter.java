@@ -77,8 +77,8 @@ public class MyAdapter extends RecyclerView.Adapter<ViewHolder> {
         }
 
         @Override
-        public void onClick(View view) {
-            //sScanResultClickListener.onScanResultItemClick(getItem(getAdapterPosition()));
+        public void onClick (View view) {
+
         }
     }
 

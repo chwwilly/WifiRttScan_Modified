@@ -27,8 +27,8 @@ import java.util.List;
 public class RangingSurveyActivity extends AppCompatActivity {
     private static final String TAG = "RSActivity";
 
-    private static final int MILLISECONDS_DELAY_BEFORE_NEW_RANGING_REQUEST_DEFAULT = 1000;
-    private static final int SAMPLE_SIZE_DEFAULT = 5;
+    private static final int MILLISECONDS_DELAY_BEFORE_NEW_RANGING_REQUEST_DEFAULT = 1000; // Delay period
+    private static final int SAMPLE_SIZE_DEFAULT = 5; // Request window size
 
     public static final String SURVEY_EXTRA =
             "com.example.android.rttsurvey.extra.SURVEY";
@@ -176,11 +176,12 @@ public class RangingSurveyActivity extends AppCompatActivity {
             ContentValues values = new ContentValues();
             for (int i = 0; i < list.size(); i++) {
                 try {
-                    db.insert(TableName, null, insertValues(i, list.get(i), values));
+                    values = insertValues(i, list.get(i), values);
                 } catch (Exception e) {
                     // Blank
                 }
             }
+            db.insert(TableName, null, values);
             mSurveyAdapter.update(list); // Show updated data in UI
             queueNextRangingRequest();
         }
