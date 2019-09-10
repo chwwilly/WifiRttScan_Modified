@@ -1,18 +1,22 @@
 package com.example.android.rttsurvey;
 
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.database.Cursor;
+import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.os.Environment;
 import android.util.Log;
+
+import java.io.File;
 
 
 public class RttDataBaseHelper extends SQLiteOpenHelper {
-    private Context context;
 
     public RttDataBaseHelper(Context context) {
         super(context, RttDatabaseContract.DATABASE_NAME , null, RttDatabaseContract.DATABASE_VERSION);
-        this.context = context;
+        //this.context = context;
     }
 
     @Override
@@ -46,7 +50,6 @@ public class RttDataBaseHelper extends SQLiteOpenHelper {
     public static int getTableIndex (SQLiteDatabase db) {
         Cursor cursor = db.rawQuery("SELECT name FROM sqlite_master AS tables WHERE TYPE = 'table'", null);
         if (cursor != null && cursor.moveToFirst()) {
-            Log.d("SQHelper", cursor.getCount() + "");
             return cursor.getCount() - 2;
         } else {
             return 0;

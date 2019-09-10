@@ -38,6 +38,7 @@ public class LocationPermissionRequestActivity extends AppCompatActivity
 
     /* Id to identify Location permission request. */
     private static final int PERMISSION_REQUEST_FINE_LOCATION = 1;
+    private static final int PERMISSION_REQUEST_EXTERNAL_STORAGE = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +46,9 @@ public class LocationPermissionRequestActivity extends AppCompatActivity
 
         // If permissions granted, we start the main activity (shut this activity down).
         if (ActivityCompat.checkSelfPermission(this, permission.ACCESS_FINE_LOCATION)
-                == PackageManager.PERMISSION_GRANTED) {
+                == PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, permission.WRITE_EXTERNAL_STORAGE)
+                        == PackageManager.PERMISSION_GRANTED) {
             finish();
         }
 
@@ -55,7 +58,11 @@ public class LocationPermissionRequestActivity extends AppCompatActivity
     public void onClickApprovePermissionRequest(View view) {
         Log.d(TAG, "onClickApprovePermissionRequest()");
 
-        // On 23+ (M+) devices, fine location permission not granted. Request permission.
+        ActivityCompat.requestPermissions(
+                this,
+                new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                PERMISSION_REQUEST_EXTERNAL_STORAGE);
+
         ActivityCompat.requestPermissions(
                 this,
                 new String[] {Manifest.permission.ACCESS_FINE_LOCATION},
@@ -84,6 +91,11 @@ public class LocationPermissionRequestActivity extends AppCompatActivity
         Log.d(TAG, "onRequestPermissionsResult(): " + permissionResult);
 
         if (requestCode == PERMISSION_REQUEST_FINE_LOCATION) {
+            // Close activity regardless of user's decision (decision picked up in main activity).
+            finish();
+        }
+
+        if (requestCode == PERMISSION_REQUEST_EXTERNAL_STORAGE) {
             // Close activity regardless of user's decision (decision picked up in main activity).
             finish();
         }

@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements ScanResultClickLi
     private static final String TAG = "MainActivity";
 
     private boolean mLocationPermissionApproved = false;
+    private boolean mExternalPermissionApproved = false;
 
     List<ScanResult> mAccessPointsSupporting80211mc;
 
@@ -103,6 +104,10 @@ public class MainActivity extends AppCompatActivity implements ScanResultClickLi
                 ActivityCompat.checkSelfPermission(this, permission.ACCESS_FINE_LOCATION)
                         == PackageManager.PERMISSION_GRANTED;
 
+        mExternalPermissionApproved =
+                ActivityCompat.checkSelfPermission(this, permission.WRITE_EXTERNAL_STORAGE)
+                        == PackageManager.PERMISSION_GRANTED;
+
         registerReceiver(
                 mWifiScanReceiver, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
     }
@@ -127,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements ScanResultClickLi
     }
 
     public void onClickFindDistancesToAccessPoints(View view) {
-        if (mLocationPermissionApproved) {
+        if (mLocationPermissionApproved && mExternalPermissionApproved) {
             logToUi(getString(R.string.retrieving_access_points));
             mWifiManager.startScan();
         } else {
@@ -138,9 +143,11 @@ public class MainActivity extends AppCompatActivity implements ScanResultClickLi
     }
 
     public void onClickStartSurvey(View view) {
-        Intent intent = new Intent(this, RangingSurveyActivity.class);
-        intent.putParcelableArrayListExtra(SURVEY_EXTRA, (ArrayList<? extends Parcelable>) mAdapter.getSelected());
-        startActivity(intent);
+        if (mAdapter.getSelected().size() > 0) {
+            Intent intent = new Intent(this, RangingSurveyActivity.class);
+            intent.putParcelableArrayListExtra(SURVEY_EXTRA, (ArrayList<? extends Parcelable>) mAdapter.getSelected());
+            startActivity(intent);
+        }
     }
 
     private class WifiScanReceiver extends BroadcastReceiver {

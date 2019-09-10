@@ -58,7 +58,8 @@ public class RangingSurveyActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         // Database instantiate
-        RttDataBaseHelper dbHelper = new RttDataBaseHelper(this);
+        DatabaseContext dbConext = new DatabaseContext(this);
+        RttDataBaseHelper dbHelper = new RttDataBaseHelper(dbConext);
         db = dbHelper.getWritableDatabase();
         int table_index = RttDataBaseHelper.getTableIndex(db);
         TableName = RttDatabaseContract.Table_Data.TABLE_NAME + table_index;
@@ -92,7 +93,7 @@ public class RangingSurveyActivity extends AppCompatActivity {
     public void onBackPressed () {
         mRangeRequestDelayHandler.removeCallbacksAndMessages(null);
         finish();
-        //db.close();
+        db.close();
         super.onBackPressed();
     }
 

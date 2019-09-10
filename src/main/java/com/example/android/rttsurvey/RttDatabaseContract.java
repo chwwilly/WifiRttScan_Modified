@@ -2,8 +2,6 @@ package com.example.android.rttsurvey;
 
 import android.provider.BaseColumns;
 
-import java.io.PrintWriter;
-
 public class RttDatabaseContract {
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "RttSurvey.db";
